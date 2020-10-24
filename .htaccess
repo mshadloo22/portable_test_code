@@ -1,0 +1,13 @@
+RewriteEngine on
+
+#local
+RewriteCond %{HTTP_HOST} ^portable.local$ [NC,OR]
+RewriteCond %{HTTP_HOST} ^portable.local$
+RewriteCond %{HTTP_HOST} !^/admin$
+RewriteCond %{HTTP_HOST} !^/api$
+RewriteCond %{HTTP_HOST} !^/apilar$
+RewriteCond %{HTTP_HOST} !^/data$
+RewriteCond %{REQUEST_URI} !frontend/web
+RewriteRule (.*) /frontend/dist/aangulartute$1 [L]
+
+

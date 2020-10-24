@@ -1,0 +1,6 @@
+{
+    "name": "admin/admin",
+    "license": "MIT",
+    "minimum-stability": "stable",
+    "require": {}
+}

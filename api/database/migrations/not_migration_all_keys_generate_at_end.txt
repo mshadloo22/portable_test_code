@@ -1,0 +1,80 @@
+<?php
+
+class AddKeys //extends \Illuminate\Database\Migrations\Migration
+{//this is just template remove all. so in case that there is a mistake you can change it here
+// maybe table names are changed so check design again
+public function up(){
+
+//--users 1
+        Schema::table('users',function(Blueprint $table){
+           $table->foreign('role_id')->references('id')->on('xy_roles')->onDelete('set null')->onUpdate('cascade');
+
+         });
+//--2 xy_subject_nodes
+ Schema::table('xy_subject_nodes',function(Blueprint $table){
+    $table->foreign('parent_id')->references('id')->on('xy_subject_nodes')->onDelete('cascade')->onUpdate('cascade');
+    $table->foreign('gparent_id')->references('id')->on('xy_subject_nodes')->onDelete('cascade')->onUpdate('cascade');
+  });
+
+//--3 xy_subject_nodes
+   Schema::table('xy_user_subjects',function(Blueprint $table){
+      $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade')->onUpdate('cascade');
+      $table->foreign('subject_id')->references('id')->on('xy_subject_nodes')->onDelete('cascade')->onUpdate('cascade');
+    });
+
+    //--4 xy_question_subject_nodes
+       Schema::table('xy_question_subject_nodes',function(Blueprint $table){
+          $table->foreign('question_id')->references('id')->on('xy_questions')->onDelete('cascade')->onUpdate('cascade');
+          $table->foreign('subject_node_id')->references('id')->on('xy_subject_nodes')->onDelete('cascade')->onUpdate('cascade');
+        });
+
+//--5 xy_url_lesson_questions
+Schema::table('xy_url_lesson_questions',function(Blueprint $table){
+  $table->foreign('question_id')->references('id')->on('xy_questions')->onDelete('cascade')->onUpdate('cascade');
+  $table->foreign('url_lesson_id')->references('id')->on('xy_url_lessons')->onDelete('cascade')->onUpdate('cascade');
+});
+
+
+
+}
+
+
+public function down(){
+//-- users 1
+Schema::table('user_subjects', function (Blueprint $table) {
+    $table->dropForeign('users_role_id_foreign');
+
+});
+//--2 xy_subject_nodes
+ Schema::table('xy_subject_nodes',function(Blueprint $table){
+ $table->dropForeign('parent_id_foreign');
+ $table->dropForeign('gparent_id_foreign');
+
+  });
+//--3 xy_subject_nodes
+ Schema::table('xy_user_subjects',function(Blueprint $table){
+    $table->dropForeign('user_id_foreign');
+    $table->dropForeign('subject_id_foreign');
+
+  });
+
+  //--4 xy_question_subject_nodes
+ Schema::table('xy_question_subject_nodes',function(Blueprint $table){
+    $table->dropForeign('question_id_foreign');
+    $table->dropForeign('subject_node_id_foreign');
+  });
+
+
+//--5 xy_url_lesson_questions
+Schema::table('xy_url_lesson_questions',function(Blueprint $table){
+  $table->dropForeign('question_id_foreign');
+  $table->dropForeign('url_lesson_id_foreign');
+});
+
+
+
+
+}
+
+}
+?>
