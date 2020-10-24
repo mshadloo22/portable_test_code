@@ -1,0 +1,20 @@
+{
+  "/api1":{
+      "target":"http://localhost:8099/aang_tute_api/",
+      "secure":false,
+      "changeOrigin":true
+
+  },
+  "/api":{
+    "target":"http://portable.local/",
+    "secure":false,
+    "changeOrigin":true
+
+},
+  "/public":{
+    "target":"http://localhost:8099/aa_oztutor123/lar/",
+    "secure":false,
+    "changeOrigin":true
+
+}
+}
