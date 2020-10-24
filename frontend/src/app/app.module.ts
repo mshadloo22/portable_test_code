@@ -5,6 +5,14 @@ import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import {NgxPaginationModule} from 'ngx-pagination';
 import {AccordionModule} from "ngx-accordion";
 import { AngularFontAwesomeModule } from 'angular-font-awesome';
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import * as $ from 'jquery';
+
+
+
+
+
+
 
 
 
@@ -27,8 +35,8 @@ import { LoginComponent } from './View/login/login.component';
 
   ],
   imports: [ReactiveFormsModule,NgxPaginationModule,NgbModule,FormsModule,AccordionModule,
-    BrowserModule,HttpClientModule,AppRoutingModule,AngularFontAwesomeModule
-  ],
+    BrowserModule,HttpClientModule,AppRoutingModule,AngularFontAwesomeModule,
+      ],
   providers: [SrvrecordsService,UserService,AuthGuard],
   bootstrap: [AppComponent]
 })

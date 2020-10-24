@@ -69,6 +69,9 @@ var SrvrecordsService = /** @class */ (function () {
     SrvrecordsService.prototype.getDataApi2 = function () {
         return this.http.get('/api/web/document/test1');
     };
+    SrvrecordsService.prototype.AuthenticateUser = function (email, password) {
+        return this.http.post('//api/web/login', { email: email, password: password });
+    };
     SrvrecordsService = __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Injectable"])(),
         __metadata("design:paramtypes", [_angular_common_http__WEBPACK_IMPORTED_MODULE_1__["HttpClient"]])
@@ -341,7 +344,7 @@ module.exports = ""
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "\n<form>\n  <input type=\"text\" [(ngModel)]=\"_username\"  />\n  <input type=\"text\" [(ngModel)]=\"_password\" />\n  </form>"
+module.exports = "\n<form>\n  <input type=\"text\" [(ngModel)]=\"_email\"  />\n  <input type=\"text\" [(ngModel)]=\"_password\" />\n  <button type=\"button\" (click)=\"\"></button>\n  </form>"
 
 /***/ }),
 
@@ -375,6 +378,10 @@ var LoginComponent = /** @class */ (function () {
     LoginComponent.prototype.ngOnInit = function () {
     };
     LoginComponent.prototype.loginButton = function () {
+        //--info your service imported as an private var in constructor
+        this._srvRecords.AuthenticateUser(this._email, this._password).subscribe(function (data) {
+            console.log('login returned result');
+        });
     };
     LoginComponent = __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({

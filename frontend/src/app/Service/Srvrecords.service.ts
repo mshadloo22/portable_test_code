@@ -30,5 +30,9 @@ return this.http.get<any>('/api1/testjson.php');
   }
 getDataApi2(){
   return this.http.get<any>('/api/web/document/test1');
+
+}
+AuthenticateUser(email:string,password:string){
+    return this.http.post<any>('/api/web/login',{email:email,password:password});
 }
 }

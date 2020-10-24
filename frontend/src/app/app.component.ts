@@ -12,9 +12,7 @@ export class AppComponent {
   ngOnInit() {
     console.log('appcommponentnginit');
     let url=location.href;
-    if(url.indexOf('login')!=-1){
-      (<HTMLElement>document.querySelector('.navbar')).style.display="none";
-    }
+
   }
 
 }
